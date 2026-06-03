@@ -4,8 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artist Gallery</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Artist Gallery</h1>
+  <main class="container">
+    <header class="site-header">
+      <a href="/" class="site-name">Artist Gallery</a>
+      <nav class="site-nav">
+        <a href="#works">Works</a>
+        <a href="#blog">Blog</a>
+      </nav>
+    </header>
+
+    <section class="intro">
+      <p>
+        A gallery for artists — a small, quiet place to share works,
+        sketches, and notes.
+      </p>
+    </section>
+
+    <hr>
+
+    <section id="works" class="section">
+      <h2 class="section-title">Works</h2>
+      <ul class="entry-list">
+        <li class="entry">
+          <a href="#" class="entry-title">Work title one</a>
+          <span class="entry-desc">— Short description of the piece</span>
+        </li>
+        <li class="entry">
+          <a href="#" class="entry-title">Work title two</a>
+          <span class="entry-desc">— Short description of the piece</span>
+        </li>
+        <li class="entry">
+          <a href="#" class="entry-title">Work title three</a>
+          <span class="entry-desc">— Short description of the piece</span>
+        </li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section id="blog" class="section">
+      <h2 class="section-title">Blog</h2>
+      <ul class="entry-list">
+        <li class="entry">
+          <a href="#" class="entry-title">Post title one</a>
+          <span class="entry-date">(Jan 1, 2026)</span>
+        </li>
+        <li class="entry">
+          <a href="#" class="entry-title">Post title two</a>
+          <span class="entry-date">(Dec 12, 2025)</span>
+        </li>
+        <li class="entry">
+          <a href="#" class="entry-title">Post title three</a>
+          <span class="entry-date">(Oct 3, 2025)</span>
+        </li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <footer class="site-footer">
+      <span>Artist Gallery • 2026</span>
+    </footer>
+  </main>
 </body>
 </html>
