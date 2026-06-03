@@ -7,67 +7,58 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="container">
-    <header class="site-header">
+  <div class="page">
+    <header class="site-info">
       <a href="/" class="site-name">Artist Gallery</a>
-      <nav class="site-nav">
-        <a href="#works">Works</a>
-        <a href="#blog">Blog</a>
-      </nav>
+      <p class="site-tagline">
+        作品とスケッチを静かに置いておくための、小さな展示場。<br>
+        作家たちの手仕事を、ゆっくりとお楽しみください。
+      </p>
     </header>
 
-    <section class="intro">
-      <p>
-        A gallery for artists — a small, quiet place to share works,
-        sketches, and notes.
-      </p>
-    </section>
+    <main class="content">
+      <h1 class="content-title">一覧</h1>
 
-    <hr>
-
-    <section id="works" class="section">
-      <h2 class="section-title">Works</h2>
       <ul class="entry-list">
         <li class="entry">
-          <a href="#" class="entry-title">Work title one</a>
-          <span class="entry-desc">— Short description of the piece</span>
+          <a href="#" class="entry-link">
+            <h2 class="entry-title">作品タイトル ひとつめ</h2>
+            <p class="entry-excerpt">
+              ここに作品の紹介文や、制作の覚書を数行ほど。素材や寸法、
+              制作の年なども、ここにまとめて記しておくとよいかもしれない。
+              本文の冒頭が抜粋として表示される想定で、続きはリンク先で…
+            </p>
+            <p class="entry-more">全文を読む</p>
+          </a>
         </li>
         <li class="entry">
-          <a href="#" class="entry-title">Work title two</a>
-          <span class="entry-desc">— Short description of the piece</span>
+          <a href="#" class="entry-link">
+            <h2 class="entry-title">作品タイトル ふたつめ</h2>
+            <p class="entry-excerpt">
+              ここにも、作品の紹介文をプレースホルダーとして並べておく。
+              実際の運用では、CMSやマークダウンファイルから読み込まれた
+              本文の冒頭が、自動的にこの位置に展開される想定で…
+            </p>
+            <p class="entry-more">全文を読む</p>
+          </a>
         </li>
         <li class="entry">
-          <a href="#" class="entry-title">Work title three</a>
-          <span class="entry-desc">— Short description of the piece</span>
+          <a href="#" class="entry-link">
+            <h2 class="entry-title">作品タイトル みっつめ</h2>
+            <p class="entry-excerpt">
+              三つ目のプレースホルダー。各エントリーは縦に積まれ、
+              間に薄い罫線が引かれる構成。タイトルは明朝体で組み、
+              全体に余白を多めにとっています…
+            </p>
+            <p class="entry-more">全文を読む</p>
+          </a>
         </li>
       </ul>
-    </section>
 
-    <hr>
-
-    <section id="blog" class="section">
-      <h2 class="section-title">Blog</h2>
-      <ul class="entry-list">
-        <li class="entry">
-          <a href="#" class="entry-title">Post title one</a>
-          <span class="entry-date">(Jan 1, 2026)</span>
-        </li>
-        <li class="entry">
-          <a href="#" class="entry-title">Post title two</a>
-          <span class="entry-date">(Dec 12, 2025)</span>
-        </li>
-        <li class="entry">
-          <a href="#" class="entry-title">Post title three</a>
-          <span class="entry-date">(Oct 3, 2025)</span>
-        </li>
-      </ul>
-    </section>
-
-    <hr>
-
-    <footer class="site-footer">
-      <span>Artist Gallery • 2026</span>
-    </footer>
-  </main>
+      <footer class="site-footer">
+        <p>© Artist Gallery All Rights Reserved.</p>
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
