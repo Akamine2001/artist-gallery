@@ -1,64 +1,139 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DEMO Artist Gallery</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGITO Studio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page">
-    <header class="site-info">
-      <a href="/" class="site-name">test Artist Gallery</a>
-      <p class="site-tagline">
-        作品とスケッチを静かに置いておくための、小さな展示場。<br>
-        作家たちの手仕事を、ゆっくりとお楽しみください。
-      </p>
+
+    <header>
+        <div class="logo">AGITO</div>
+
+        <nav>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#members">Members</a>
+        </nav>
     </header>
 
-    <main class="content">
-      <h1 class="content-title">一覧</h1>
+    <section class="hero">
+        <h1>
+            we<br>
+            have forgotten our own world
+        </h1>
 
-      <ul class="entry-list">
-        <li class="entry">
-          <a href="#" class="entry-link">
-            <h2 class="entry-title">作品タイトル ひとつめ</h2>
-            <p class="entry-excerpt">
-              ここに作品の紹介文や、制作の覚書を数行ほど。素材や寸法、
-              制作の年なども、ここにまとめて記しておくとよいかもしれない。
-              本文の冒頭が抜粋として表示される想定で、続きはリンク先で…
-            </p>
-            <p class="entry-more">全文を読む</p>
-          </a>
-        </li>
-        <li class="entry">
-          <a href="#" class="entry-link">
-            <h2 class="entry-title">作品タイトル ふたつめ</h2>
-            <p class="entry-excerpt">
-              ここにも、作品の紹介文をプレースホルダーとして並べておく。
-              実際の運用では、CMSやマークダウンファイルから読み込まれた
-              本文の冒頭が、自動的にこの位置に展開される想定で…
-            </p>
-            <p class="entry-more">全文を読む</p>
-          </a>
-        </li>
-        <li class="entry">
-          <a href="#" class="entry-link">
-            <h2 class="entry-title">作品タイトル みっつめ</h2>
-            <p class="entry-excerpt">
-              三つ目のプレースホルダー。各エントリーは縦に積まれ、
-              間に薄い罫線が引かれる構成。タイトルは明朝体で組み、
-              全体に余白を多めにとっています…
-            </p>
-            <p class="entry-more">全文を読む</p>
-          </a>
-        </li>
-      </ul>
+        <p>
+            A multidisciplinary artist collective creating fictional
+            civilizations, histories, and cultures through visual storytelling.
+        </p>
 
-      <footer class="site-footer">
-        <p>© Artist Gallery All Rights Reserved.</p>
-      </footer>
-    </main>
-  </div>
+        <a href="#projects" class="button">Explore</a>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="section-title">
+            artwork
+        </div>
+
+        <div class="projects">
+
+            <div class="project">
+                <img src="images/IMG_0010.jpeg" alt="">
+                <h3>random object</h3>
+                <span>rando Project · 2022</span>
+            </div>
+
+            <div class="project">
+                <img src="images/IMG_0051.jpeg" alt="">
+                <h3>two leg</h3>
+                <span>self balancing Exhibition</span>
+            </div>
+
+            <div class="project">
+                <img src="images/IMG_5474.jpeg" alt="">
+                <h3>Future Relics</h3>
+                <span>fuuma Installation</span>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="section-title">
+            about us
+        </div>
+
+        <p>
+            AGITO Studio is an artist collective focused on storytelling,
+            worldbuilding, visual art, 3D production, and speculative design.
+            Through collaborative creation, we build fragments of worlds that
+            never existed, preserving their histories through art.
+        </p>
+    </section>
+
+    <section id="members" class="section">
+        <div class="section-title">
+            Members
+        </div>
+
+        <div class="members">
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 01</h4>
+                <p>3D Artist</p>
+            </div>
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 02</h4>
+                <p>Illustrator</p>
+            </div>
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 03</h4>
+                <p>Concept Artist</p>
+            </div>
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 04</h4>
+                <p>Writer</p>
+            </div>
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 05</h4>
+                <p>Designer</p>
+            </div>
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 06</h4>
+                <p>Animator</p>
+            </div>
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 07</h4>
+                <p>Artist</p>
+            </div>
+
+            <div class="member">
+                <img src="images/icon.png" alt="">
+                <h4>Member 08</h4>
+                <p>Artist</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 AGITO Studio</p>
+    </footer>
+
 </body>
 </html>
