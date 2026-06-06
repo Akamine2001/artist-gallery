@@ -1,0 +1,22 @@
+---
+import { galleryItems } from "../data/gallery";
+---
+
+<section id="gallery" class="section">
+    <div class="section-title">
+        gallery
+    </div>
+
+    <div class="gallery">
+        {galleryItems.map((item) => (
+            <a class={`gallery-card${item.comingSoon ? " is-skeleton" : ""}`} aria-disabled={item.comingSoon}>
+                <div class="gallery-thumb"></div>
+                <div class="gallery-meta">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    {item.comingSoon && <span class="gallery-badge">Coming Soon</span>}
+                </div>
+            </a>
+        ))}
+    </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import { members } from "../data/members";
+---
+
+<section id="members" class="section">
+    <div class="section-title">
+        members
+    </div>
+
+    <div class="members">
+        {members.map((member) => (
+            <div class="member">
+                <Image
+                    src={member.image}
+                    alt={member.name}
+                    widths={[250, 500]}
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <h4>{member.name}</h4>
+                <p>{member.role}</p>
+            </div>
+        ))}
+    </div>
+</section>
