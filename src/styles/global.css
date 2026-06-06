@@ -114,6 +114,7 @@ nav a{
 
 .project img{
     width:100%;
+    height:auto;
     display:block;
     margin-bottom:20px;
 }
@@ -146,6 +147,7 @@ nav a{
 
 .member img{
     width:100%;
+    height:auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display:block;
