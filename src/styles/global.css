@@ -357,9 +357,9 @@ html[lang="zh"] .gallery-meta p {
 
 /* Artwork detail page */
 .artwork-detail {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 160px 8% 120px;
+  padding: 160px 6% 120px;
 }
 
 .artwork-detail__back {
@@ -373,6 +373,22 @@ html[lang="zh"] .gallery-meta p {
 
 .artwork-detail__back:hover {
   color: #111;
+}
+
+.artwork-detail__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.artwork-detail__media {
+  position: sticky;
+  top: 120px;
+}
+
+.artwork-detail__body {
+  min-width: 0;
 }
 
 .artwork-detail__head {
@@ -407,7 +423,7 @@ html[lang="zh"] .artwork-detail__title {
 }
 
 .artwork-detail__figure {
-  margin: 0 0 60px;
+  margin: 0;
 }
 
 .artwork-detail__figure img {
@@ -523,6 +539,26 @@ footer {
 
   .gallery {
     grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .artwork-detail {
+    padding: 120px 6% 80px;
+  }
+
+  .artwork-detail__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .artwork-detail__media {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .artwork-detail__grid {
     gap: 50px;
   }
 }

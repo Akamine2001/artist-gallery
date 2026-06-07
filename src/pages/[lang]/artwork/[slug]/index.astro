@@ -30,57 +30,63 @@ const title = `${pick(artwork.title, lang)} — AGITO Studio`;
       ← {t("artwork.detail.back", lang)}
     </a>
 
-    <header class="artwork-detail__head">
-      <p class="artwork-detail__caption">{pick(artwork.caption, lang)}</p>
-      <h1 class="artwork-detail__title">{pick(artwork.title, lang)}</h1>
-    </header>
-
-    <figure class="artwork-detail__figure">
-      <Image
-        src={artwork.image}
-        alt={pick(artwork.title, lang)}
-        widths={[600, 1200, 1800]}
-        sizes="(max-width: 768px) 100vw, 80vw"
-      />
-    </figure>
-
-    <dl class="artwork-detail__meta">
-      <div>
-        <dt>{t("artwork.detail.year", lang)}</dt>
-        <dd>{artwork.year}</dd>
+    <div class="artwork-detail__grid">
+      <div class="artwork-detail__media">
+        <figure class="artwork-detail__figure">
+          <Image
+            src={artwork.image}
+            alt={pick(artwork.title, lang)}
+            widths={[600, 900, 1200]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </figure>
       </div>
-      <div>
-        <dt>{t("artwork.detail.medium", lang)}</dt>
-        <dd>{pick(artwork.medium, lang)}</dd>
+
+      <div class="artwork-detail__body">
+        <header class="artwork-detail__head">
+          <p class="artwork-detail__caption">{pick(artwork.caption, lang)}</p>
+          <h1 class="artwork-detail__title">{pick(artwork.title, lang)}</h1>
+        </header>
+
+        <dl class="artwork-detail__meta">
+          <div>
+            <dt>{t("artwork.detail.year", lang)}</dt>
+            <dd>{artwork.year}</dd>
+          </div>
+          <div>
+            <dt>{t("artwork.detail.medium", lang)}</dt>
+            <dd>{pick(artwork.medium, lang)}</dd>
+          </div>
+          <div>
+            <dt>{t("artwork.detail.dimensions", lang)}</dt>
+            <dd>{pick(artwork.dimensions, lang)}</dd>
+          </div>
+        </dl>
+
+        <section class="artwork-detail__section">
+          <h2>{t("artwork.detail.overview", lang)}</h2>
+          <p class="is-placeholder">{pick(artwork.overview, lang)}</p>
+          <span class="artwork-detail__placeholder-badge">
+            {t("artwork.detail.placeholder", lang)}
+          </span>
+        </section>
+
+        <section class="artwork-detail__section">
+          <h2>{t("artwork.detail.background", lang)}</h2>
+          <p class="is-placeholder">{pick(artwork.background, lang)}</p>
+          <span class="artwork-detail__placeholder-badge">
+            {t("artwork.detail.placeholder", lang)}
+          </span>
+        </section>
+
+        <section class="artwork-detail__section">
+          <h2>{t("artwork.detail.technique", lang)}</h2>
+          <p class="is-placeholder">{pick(artwork.technique, lang)}</p>
+          <span class="artwork-detail__placeholder-badge">
+            {t("artwork.detail.placeholder", lang)}
+          </span>
+        </section>
       </div>
-      <div>
-        <dt>{t("artwork.detail.dimensions", lang)}</dt>
-        <dd>{pick(artwork.dimensions, lang)}</dd>
-      </div>
-    </dl>
-
-    <section class="artwork-detail__section">
-      <h2>{t("artwork.detail.overview", lang)}</h2>
-      <p class="is-placeholder">{pick(artwork.overview, lang)}</p>
-      <span class="artwork-detail__placeholder-badge">
-        {t("artwork.detail.placeholder", lang)}
-      </span>
-    </section>
-
-    <section class="artwork-detail__section">
-      <h2>{t("artwork.detail.background", lang)}</h2>
-      <p class="is-placeholder">{pick(artwork.background, lang)}</p>
-      <span class="artwork-detail__placeholder-badge">
-        {t("artwork.detail.placeholder", lang)}
-      </span>
-    </section>
-
-    <section class="artwork-detail__section">
-      <h2>{t("artwork.detail.technique", lang)}</h2>
-      <p class="is-placeholder">{pick(artwork.technique, lang)}</p>
-      <span class="artwork-detail__placeholder-badge">
-        {t("artwork.detail.placeholder", lang)}
-      </span>
-    </section>
+    </div>
   </article>
 </BaseLayout>
