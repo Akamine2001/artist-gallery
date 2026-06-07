@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import { artworks } from "../data/artworks";
+---
+
+<section id="artwork" class="section">
+  <div class="section-title">artwork</div>
+
+  <div class="artworks">
+    {
+      artworks.map((artwork) => (
+        <div class="artwork">
+          <Image
+            src={artwork.image}
+            alt={artwork.title}
+            widths={[400, 800, 1200]}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <h3>{artwork.title}</h3>
+          <span>{artwork.caption}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>

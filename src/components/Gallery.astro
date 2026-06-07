@@ -14,9 +14,9 @@ import { galleryItems } from "../data/gallery";
         >
           <div class="gallery-thumb" />
           <div class="gallery-meta">
+            <span class="gallery-badge">{item.status}</span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-            {item.comingSoon && <span class="gallery-badge">Coming Soon</span>}
           </div>
         </a>
       ))
