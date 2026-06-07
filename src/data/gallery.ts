@@ -1,10 +1,13 @@
 import type { LocalizedString } from "../i18n/utils";
+import flowersThumb from "../assets/LLM-serenity in springtime calm.png";
 
 export interface GalleryItem {
   title: LocalizedString;
   description: LocalizedString;
   status: LocalizedString;
   comingSoon: boolean;
+  href?: string;
+  thumb?: ImageMetadata;
 }
 
 const upcoming: LocalizedString = {
@@ -15,14 +18,16 @@ const upcoming: LocalizedString = {
 
 export const galleryItems: GalleryItem[] = [
   {
-    title: { ja: "ミニマル", en: "Minimal", zh: "极简" },
+    title: { ja: "花", en: "Flowers", zh: "花" },
     description: {
-      ja: "余白を活かしたモノクロタイポグラフィ。",
-      en: "Whitespace-driven, monochrome typography.",
-      zh: "以留白驱动的单色字体设计。",
+      ja: "年齢ごとに移ろう花と、ひとりの生を辿る散文詩。",
+      en: "A poem of flowers, marking the passages of a life.",
+      zh: "随年龄流转的花，与一段人生的诗。",
     },
-    status: upcoming,
-    comingSoon: true,
+    status: { ja: "読む", en: "Coming soon", zh: "阅读" },
+    comingSoon: false,
+    href: "story",
+    thumb: flowersThumb,
   },
   {
     title: { ja: "エディトリアル", en: "Editorial", zh: "编辑设计" },

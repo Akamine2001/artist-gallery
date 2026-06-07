@@ -1,0 +1,619 @@
+---
+import { Image } from "astro:assets";
+import { locales, localeLabels, type Locale } from "../../i18n/config";
+import { storyContent } from "../../data/story";
+
+import coverImage from "../../assets/LLM-serenity in springtime calm.png";
+import sakuraImg from "../../assets/LLM-sakura.png";
+import bouquetImg from "../../assets/LLM-Quiet moments with a white bouquet.png";
+import roseImg from "../../assets/LLM-Rose_stem.png";
+import sakuraStemImg from "../../assets/LLM-sakura_stem.png";
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const content = storyContent[lang];
+const baseUrl = import.meta.env.BASE_URL;
+const backHref = `${baseUrl}${lang}/`;
+
+const imagesByAge: Record<string, ImageMetadata> = {
+  "25": sakuraImg,
+  "22": bouquetImg,
+  "18": roseImg,
+  "0": sakuraStemImg,
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{content.pageTitle}</title>
+  </head>
+
+  <body class="story-body">
+    <nav class="story-nav" aria-label="Story navigation">
+      <a class="story-nav__back" href={backHref}>{content.colophon.back}</a>
+      <div class="story-nav__lang" aria-label="Language">
+        <button
+          type="button"
+          class="story-nav__lang-toggle"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-label={localeLabels[lang]}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3a14 14 0 0 1 0 18"></path>
+            <path d="M12 3a14 14 0 0 0 0 18"></path>
+          </svg>
+        </button>
+        <ul class="story-nav__lang-menu" role="menu">
+          {
+            locales.map((l) => (
+              <li role="none">
+                <a
+                  role="menuitem"
+                  href={`${baseUrl}${l}/story`}
+                  class:list={[
+                    "story-nav__lang-item",
+                    { "is-active": l === lang },
+                  ]}
+                  aria-current={l === lang ? "page" : undefined}
+                  hreflang={l}
+                >
+                  {localeLabels[l]}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </nav>
+
+    <header class="masthead">
+      <Image src={coverImage} alt="" loading="eager" class="masthead__bg" />
+      <div class="masthead__overlay"></div>
+      <div class="masthead__content">
+        <h1 class="masthead__title">
+          <span>{content.title.line1}</span>
+          <span class="masthead__title--indent">{content.title.line2}</span>
+          <span>{content.title.line3}</span>
+        </h1>
+      </div>
+    </header>
+
+    <article class="story">
+      {
+        content.chapters && content.chapters.length > 0 && (
+          <div class="chapters">
+            {content.chapters.map((chapter) => {
+              const figure = imagesByAge[chapter.age];
+              return (
+                <section class="chapter">
+                  <header class="chapter__head">
+                    <div class="chapter__age">{chapter.age}</div>
+                    <div class="chapter__age-label">{chapter.ageLabel}</div>
+                    <h2 class="chapter__title">{chapter.title}</h2>
+                  </header>
+                  <div class="chapter__body">
+                    {chapter.lines.map((line) => (
+                      <p>{line}</p>
+                    ))}
+                  </div>
+                  {figure && (
+                    <figure class="chapter__figure">
+                      <Image src={figure} alt={chapter.title} />
+                    </figure>
+                  )}
+                </section>
+              );
+            })}
+          </div>
+        )
+      }
+
+      {
+        content.comingSoon && (
+          <section class="coming-soon">
+            <p class="coming-soon__message">{content.comingSoon.message}</p>
+          </section>
+        )
+      }
+
+      <footer class="colophon">
+        <div class="colophon__rule"></div>
+        <dl class="colophon__credits">
+          {
+            content.colophon.credits.flatMap((c) => [
+              <dt>{c.label}</dt>,
+              <dd>{c.value}</dd>,
+            ])
+          }
+        </dl>
+        <a class="colophon__back" href={backHref}>{content.colophon.back}</a>
+      </footer>
+    </article>
+
+    <style is:global>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body.story-body {
+        margin: 0;
+        background: #f5f3ef;
+        color: #111;
+        font-family: "Inter", "Noto Sans JP", sans-serif;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      html[lang="ja"] body.story-body {
+        font-family: "Inter", "Noto Sans JP", sans-serif;
+      }
+
+      html[lang="zh"] body.story-body {
+        font-family: "Inter", "Noto Sans SC", sans-serif;
+        letter-spacing: 0.02em;
+      }
+
+      .story {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        background: #f5f3ef;
+        overflow-x: hidden;
+      }
+
+      /* ===== Story nav ===== */
+      .story-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        padding: 16px 40px;
+
+        background: rgba(245, 243, 239, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .story-nav__back {
+        text-decoration: none;
+        color: #111;
+        font-size: 0.82rem;
+        letter-spacing: 0.18em;
+        transition: opacity 0.3s ease;
+      }
+
+      html[lang="ja"] .story-nav__back {
+        font-family: "Noto Sans JP", sans-serif;
+      }
+
+      html[lang="zh"] .story-nav__back {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+
+      .story-nav__back:hover {
+        opacity: 0.55;
+      }
+
+      .story-nav__lang {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .story-nav__lang-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        color: #555;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+
+      .story-nav__lang-toggle:hover,
+      .story-nav__lang-toggle:focus-visible {
+        color: #111;
+      }
+
+      .story-nav__lang-toggle:focus {
+        outline: none;
+      }
+
+      .story-nav__lang-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        margin: 0;
+        padding: 8px 0;
+        list-style: none;
+        min-width: 120px;
+        background: #fff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4px);
+        transition:
+          opacity 0.18s ease,
+          transform 0.18s ease,
+          visibility 0.18s ease;
+        z-index: 20;
+      }
+
+      .story-nav__lang:hover .story-nav__lang-menu,
+      .story-nav__lang:focus-within .story-nav__lang-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .story-nav__lang:hover .story-nav__lang-toggle,
+      .story-nav__lang:focus-within .story-nav__lang-toggle {
+        color: #111;
+      }
+
+      .story-nav__lang-item {
+        display: block;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: #666;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+      }
+
+      .story-nav__lang-item:hover {
+        color: #111;
+      }
+
+      .story-nav__lang-item.is-active {
+        color: #111;
+        font-weight: 500;
+        background: #f5f5f5;
+      }
+
+      .chapters,
+      .coming-soon,
+      .colophon {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 120px;
+        padding-right: 60px;
+      }
+
+      /* ===== Masthead ===== */
+      .masthead {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        color: #fff;
+      }
+
+      .masthead__bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+        z-index: 0;
+      }
+
+      .masthead__overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.25) 0%,
+          rgba(0, 0, 0, 0.05) 30%,
+          rgba(0, 0, 0, 0.1) 60%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+      }
+
+      .masthead__content {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 22vh 60px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .masthead__title {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 500;
+        font-size: clamp(3.5rem, 12vw, 10rem);
+        line-height: 0.95;
+        letter-spacing: -0.01em;
+        margin: 0;
+        color: #fff;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .masthead__title span {
+        display: block;
+      }
+
+      .masthead__title--indent {
+        padding-left: 2em;
+        font-style: italic;
+      }
+
+      /* ===== Chapters ===== */
+      .chapters {
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }
+
+      .chapter {
+        display: grid;
+        grid-template-columns: 200px minmax(0, 1fr);
+        column-gap: 80px;
+        row-gap: 0;
+        padding: 100px 0;
+        border-top: 1px solid #d8d4ca;
+      }
+
+      .chapter:first-child {
+        border-top: none;
+        padding-top: 40px;
+      }
+
+      .chapter__head {
+        position: sticky;
+        top: 40px;
+        align-self: start;
+        grid-column: 1;
+      }
+
+      .chapter__age {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: clamp(3.5rem, 6vw, 5rem);
+        line-height: 1;
+        color: #111;
+      }
+
+      .chapter__age-label {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 0.72rem;
+        letter-spacing: 0.4em;
+        color: #888;
+      }
+
+      html[lang="ja"] .chapter__age-label,
+      html[lang="zh"] .chapter__age-label {
+        font-family: "Noto Sans JP", sans-serif;
+      }
+
+      .chapter__title {
+        margin-top: 28px;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        color: #444;
+      }
+
+      html[lang="ja"] .chapter__title {
+        font-family: "Noto Sans JP", sans-serif;
+      }
+
+      html[lang="zh"] .chapter__title {
+        font-family: "Noto Sans SC", sans-serif;
+      }
+
+      .chapter__body {
+        grid-column: 2;
+        max-width: 620px;
+        font-size: 1.04rem;
+        line-height: 2.1;
+        color: #222;
+      }
+
+      .chapter__body p {
+        margin: 0;
+      }
+
+      .chapter__body p + p {
+        margin-top: 0.7em;
+      }
+
+      html[lang="zh"] .chapter__body {
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+      }
+
+      .chapter__figure {
+        grid-column: 2;
+        margin: 60px 0 0;
+        max-width: 620px;
+      }
+
+      .chapter__figure img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* ===== Coming soon ===== */
+      .coming-soon {
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding-top: 120px;
+        padding-bottom: 120px;
+      }
+
+      .coming-soon__message {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #888;
+        letter-spacing: 0.04em;
+        margin: 0;
+      }
+
+      /* ===== Colophon ===== */
+      .colophon {
+        margin-top: 120px;
+        padding-top: 60px;
+        padding-bottom: 120px;
+      }
+
+      .colophon__rule {
+        width: 60px;
+        height: 1px;
+        background: #111;
+        margin: 0 0 40px;
+      }
+
+      .colophon__credits {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 12px 24px;
+        margin: 0 0 60px;
+        font-size: 0.9rem;
+        color: #333;
+      }
+
+      .colophon__credits dt {
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #888;
+        font-weight: 500;
+      }
+
+      .colophon__credits dd {
+        margin: 0;
+      }
+
+      .colophon__back {
+        display: inline-block;
+        text-decoration: none;
+        color: #111;
+        font-size: 0.85rem;
+        letter-spacing: 0.25em;
+        border-bottom: 1px solid #111;
+        padding-bottom: 4px;
+        transition: letter-spacing 0.3s ease;
+      }
+
+      .colophon__back:hover {
+        letter-spacing: 0.35em;
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 768px) {
+        .chapters,
+        .coming-soon,
+        .colophon {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+
+        .story-nav {
+          padding: 10px 20px;
+          gap: 12px;
+        }
+
+        .story-nav__back {
+          font-size: 0.72rem;
+          letter-spacing: 0.12em;
+        }
+
+        .story-nav__lang-toggle {
+          width: 32px;
+          height: 32px;
+        }
+
+        .masthead__content {
+          padding: 22vh 24px 60px;
+        }
+
+        .masthead__title--indent {
+          padding-left: 1em;
+        }
+
+        .chapter {
+          grid-template-columns: 1fr;
+          padding: 60px 0;
+          row-gap: 30px;
+        }
+
+        .chapter__head {
+          position: static;
+          grid-column: 1;
+        }
+
+        .chapter__title {
+          margin-top: 16px;
+        }
+
+        .chapter__body,
+        .chapter__figure {
+          grid-column: 1;
+        }
+
+        .chapter__figure {
+          margin-top: 30px;
+        }
+      }
+    </style>
+  </body>
+</html>

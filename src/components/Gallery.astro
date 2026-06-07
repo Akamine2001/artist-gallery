@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { galleryItems } from "../data/gallery";
 import type { Locale } from "../i18n/config";
 import { t } from "../i18n/ui";
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section id="gallery" class="section">
@@ -16,19 +18,27 @@ const { lang } = Astro.props;
 
   <div class="gallery">
     {
-      galleryItems.map((item) => (
-        <a
-          class={`gallery-card${item.comingSoon ? " is-skeleton" : ""}`}
-          aria-disabled={item.comingSoon}
-        >
-          <div class="gallery-thumb" />
-          <div class="gallery-meta">
-            <span class="gallery-badge">{pick(item.status, lang)}</span>
-            <h3>{pick(item.title, lang)}</h3>
-            <p>{pick(item.description, lang)}</p>
-          </div>
-        </a>
-      ))
+      galleryItems.map((item) => {
+        const href = item.href ? `${baseUrl}${lang}/${item.href}` : undefined;
+        return (
+          <a
+            class={`gallery-card${item.comingSoon ? " is-skeleton" : ""}`}
+            aria-disabled={item.comingSoon}
+            href={href}
+          >
+            <div class="gallery-thumb">
+              {item.thumb && (
+                <Image src={item.thumb} alt={pick(item.title, lang)} />
+              )}
+            </div>
+            <div class="gallery-meta">
+              <span class="gallery-badge">{pick(item.status, lang)}</span>
+              <h3>{pick(item.title, lang)}</h3>
+              <p>{pick(item.description, lang)}</p>
+            </div>
+          </a>
+        );
+      })
     }
   </div>
 </section>
