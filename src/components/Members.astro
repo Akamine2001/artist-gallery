@@ -1,10 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import { members } from "../data/members";
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/ui";
+import { pick } from "../i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <section id="members" class="section">
-  <div class="section-title">members</div>
+  <div class="section-title">{t("members.title", lang)}</div>
 
   <div class="members">
     {
@@ -12,12 +21,12 @@ import { members } from "../data/members";
         <div class="member">
           <Image
             src={member.image}
-            alt={member.name}
+            alt={pick(member.name, lang)}
             widths={[250, 500]}
             sizes="(max-width: 768px) 50vw, 25vw"
           />
-          <h4>{member.name}</h4>
-          <p>{member.role}</p>
+          <h4>{pick(member.name, lang)}</h4>
+          <p>{pick(member.role, lang)}</p>
         </div>
       ))
     }

@@ -1,17 +1,16 @@
 ---
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/ui";
 
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <section class="hero">
-  <h1>
-    we<br />
-    have forgotten our own world
-  </h1>
-
-  <p>
-    A multidisciplinary artist collective creating fictional civilizations,
-    histories, and cultures through visual storytelling.
-  </p>
-
-  <a href="#artwork" class="button">Explore</a>
+  <h1 set:html={t("hero.title", lang)} />
+  <p>{t("hero.lead", lang)}</p>
+  <a href="#artwork" class="button">{t("hero.cta", lang)}</a>
 </section>

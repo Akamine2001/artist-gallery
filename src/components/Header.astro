@@ -1,14 +1,37 @@
 ---
+import { locales, localeLabels, type Locale } from "../i18n/config";
+import { localizedPath } from "../i18n/utils";
+import { t } from "../i18n/ui";
 
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <header>
   <div class="logo">AGITO</div>
 
   <nav>
-    <a href="#artwork">Artwork</a>
-    <a href="#members">Members</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#about">About</a>
+    <a href="#artwork">{t("nav.artwork", lang)}</a>
+    <a href="#members">{t("nav.members", lang)}</a>
+    <a href="#gallery">{t("nav.gallery", lang)}</a>
+    <a href="#about">{t("nav.about", lang)}</a>
   </nav>
+
+  <div class="lang-switcher" aria-label="Language">
+    {
+      locales.map((l) => (
+        <a
+          href={localizedPath(l)}
+          class:list={["lang-switcher__item", { "is-active": l === lang }]}
+          aria-current={l === lang ? "page" : undefined}
+          hreflang={l}
+        >
+          {localeLabels[l]}
+        </a>
+      ))
+    }
+  </div>
 </header>

@@ -1,14 +1,15 @@
 ---
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/ui";
 
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <section id="about" class="section about">
-  <div class="section-title">about us</div>
-
-  <p>
-    AGITO Studio is an artist collective focused on storytelling, worldbuilding,
-    visual art, 3D production, and speculative design. Through collaborative
-    creation, we build fragments of worlds that never existed, preserving their
-    histories through art.
-  </p>
+  <div class="section-title">{t("about.title", lang)}</div>
+  <p>{t("about.body", lang)}</p>
 </section>

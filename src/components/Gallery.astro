@@ -1,9 +1,18 @@
 ---
 import { galleryItems } from "../data/gallery";
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/ui";
+import { pick } from "../i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <section id="gallery" class="section">
-  <div class="section-title">gallery</div>
+  <div class="section-title">{t("gallery.title", lang)}</div>
 
   <div class="gallery">
     {
@@ -14,9 +23,9 @@ import { galleryItems } from "../data/gallery";
         >
           <div class="gallery-thumb" />
           <div class="gallery-meta">
-            <span class="gallery-badge">{item.status}</span>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
+            <span class="gallery-badge">{pick(item.status, lang)}</span>
+            <h3>{pick(item.title, lang)}</h3>
+            <p>{pick(item.description, lang)}</p>
           </div>
         </a>
       ))
