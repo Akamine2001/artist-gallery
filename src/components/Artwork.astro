@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { artworks } from "../data/artworks";
 import type { Locale } from "../i18n/config";
 import { t } from "../i18n/ui";
-import { pick } from "../i18n/utils";
+import { pick, localizedPath } from "../i18n/utils";
 
 interface Props {
   lang: Locale;
@@ -18,7 +18,10 @@ const { lang } = Astro.props;
   <div class="artworks">
     {
       artworks.map((artwork) => (
-        <div class="artwork">
+        <a
+          class="artwork"
+          href={`${localizedPath(lang)}artwork/${artwork.slug}/`}
+        >
           <Image
             src={artwork.image}
             alt={pick(artwork.title, lang)}
@@ -27,7 +30,7 @@ const { lang } = Astro.props;
           />
           <h3>{pick(artwork.title, lang)}</h3>
           <span>{pick(artwork.caption, lang)}</span>
-        </div>
+        </a>
       ))
     }
   </div>

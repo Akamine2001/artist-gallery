@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { artworks, type Artwork } from "../../../../data/artworks";
+import { locales, type Locale } from "../../../../i18n/config";
+import { t } from "../../../../i18n/ui";
+import { pick, localizedPath } from "../../../../i18n/utils";
+
+export function getStaticPaths() {
+  return locales.flatMap((lang) =>
+    artworks.map((artwork) => ({
+      params: { lang, slug: artwork.slug },
+      props: { artwork },
+    })),
+  );
+}
+
+interface Props {
+  artwork: Artwork;
+}
+
+const { artwork } = Astro.props;
+const { lang } = Astro.params as { lang: Locale; slug: string };
+const title = `${pick(artwork.title, lang)} — AGITO Studio`;
+---
+
+<BaseLayout lang={lang} title={title}>
+  <article class="artwork-detail">
+    <a class="artwork-detail__back" href={`${localizedPath(lang)}#artwork`}>
+      ← {t("artwork.detail.back", lang)}
+    </a>
+
+    <header class="artwork-detail__head">
+      <p class="artwork-detail__caption">{pick(artwork.caption, lang)}</p>
+      <h1 class="artwork-detail__title">{pick(artwork.title, lang)}</h1>
+    </header>
+
+    <figure class="artwork-detail__figure">
+      <Image
+        src={artwork.image}
+        alt={pick(artwork.title, lang)}
+        widths={[600, 1200, 1800]}
+        sizes="(max-width: 768px) 100vw, 80vw"
+      />
+    </figure>
+
+    <dl class="artwork-detail__meta">
+      <div>
+        <dt>{t("artwork.detail.year", lang)}</dt>
+        <dd>{artwork.year}</dd>
+      </div>
+      <div>
+        <dt>{t("artwork.detail.medium", lang)}</dt>
+        <dd>{pick(artwork.medium, lang)}</dd>
+      </div>
+      <div>
+        <dt>{t("artwork.detail.dimensions", lang)}</dt>
+        <dd>{pick(artwork.dimensions, lang)}</dd>
+      </div>
+    </dl>
+
+    <section class="artwork-detail__section">
+      <h2>{t("artwork.detail.overview", lang)}</h2>
+      <p class="is-placeholder">{pick(artwork.overview, lang)}</p>
+      <span class="artwork-detail__placeholder-badge">
+        {t("artwork.detail.placeholder", lang)}
+      </span>
+    </section>
+
+    <section class="artwork-detail__section">
+      <h2>{t("artwork.detail.background", lang)}</h2>
+      <p class="is-placeholder">{pick(artwork.background, lang)}</p>
+      <span class="artwork-detail__placeholder-badge">
+        {t("artwork.detail.placeholder", lang)}
+      </span>
+    </section>
+
+    <section class="artwork-detail__section">
+      <h2>{t("artwork.detail.technique", lang)}</h2>
+      <p class="is-placeholder">{pick(artwork.technique, lang)}</p>
+      <span class="artwork-detail__placeholder-badge">
+        {t("artwork.detail.placeholder", lang)}
+      </span>
+    </section>
+  </article>
+</BaseLayout>
