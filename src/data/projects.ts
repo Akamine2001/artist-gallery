@@ -1,6 +1,6 @@
 import type { ImageMetadata } from "astro";
-import randomObject from "../assets/IMG_0010.jpeg";
-import twoLeg from "../assets/IMG_0051.jpeg";
+import rose from "../assets/LLM-Rose_stem.png";
+import sakura from "../assets/LLM-sakura_stem.png";
 import futureRelics from "../assets/IMG_5474.jpeg";
 
 export interface Project {
@@ -10,7 +10,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-    { title: "random object", caption: "rando Project · 2022",       image: randomObject },
-    { title: "two leg",       caption: "self balancing Exhibition",  image: twoLeg },
+    { title: "classic love", caption: "rose · 2022",       image: rose },
+    { title: "spring",       caption: "sakura",  image: sakura },
     { title: "Future Relics", caption: "fuuma Installation",         image: futureRelics },
 ];
