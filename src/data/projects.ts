@@ -10,7 +10,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-    { title: "classic love", caption: "rose · 2022",       image: rose },
-    { title: "spring",       caption: "sakura",  image: sakura },
-    { title: "Future Relics", caption: "fuuma Installation",         image: futureRelics },
+    { title: "classic love", caption: "Paris, France @rose · 2022",       image: rose },
+    { title: "spring",       caption: "Tokyo, Japan @sakura · 2023",  image: sakura },
+    { title: "Future Relics", caption: "Okinawa, Japan @fuuma Installation",         image: futureRelics },
 ];
