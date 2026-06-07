@@ -1,10 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import { artworks } from "../data/artworks";
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/ui";
+import { pick } from "../i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
 ---
 
 <section id="artwork" class="section">
-  <div class="section-title">artwork</div>
+  <div class="section-title">{t("artwork.title", lang)}</div>
 
   <div class="artworks">
     {
@@ -12,12 +21,12 @@ import { artworks } from "../data/artworks";
         <div class="artwork">
           <Image
             src={artwork.image}
-            alt={artwork.title}
+            alt={pick(artwork.title, lang)}
             widths={[400, 800, 1200]}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
-          <h3>{artwork.title}</h3>
-          <span>{artwork.caption}</span>
+          <h3>{pick(artwork.title, lang)}</h3>
+          <span>{pick(artwork.caption, lang)}</span>
         </div>
       ))
     }

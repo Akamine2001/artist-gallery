@@ -13,6 +13,7 @@ const dict = {
     "about.title": "私たちについて",
     "about.body":
       "AGITO Studio は、ストーリーテリング、ワールドビルディング、ビジュアルアート、3D 制作、スペキュラティブデザインを軸とするアーティスト集団です。共同制作を通じて、存在しなかった世界の断片を構築し、その歴史を芸術として残しています。",
+    "artwork.title": "作品",
     "members.title": "メンバー",
     "gallery.title": "ギャラリー",
     "footer.copy": "© 2026 AGITO Studio",
@@ -29,6 +30,7 @@ const dict = {
     "about.title": "about us",
     "about.body":
       "AGITO Studio is an artist collective focused on storytelling, worldbuilding, visual art, 3D production, and speculative design. Through collaborative creation, we build fragments of worlds that never existed, preserving their histories through art.",
+    "artwork.title": "artwork",
     "members.title": "members",
     "gallery.title": "gallery",
     "footer.copy": "© 2026 AGITO Studio",
@@ -45,6 +47,7 @@ const dict = {
     "about.title": "关于我们",
     "about.body":
       "AGITO Studio 是一个艺术家集体，专注于叙事、世界构建、视觉艺术、3D 制作与推测性设计。通过协作创作，我们构建从未存在的世界的碎片，并以艺术的形式保存它们的历史。",
+    "artwork.title": "作品",
     "members.title": "成员",
     "gallery.title": "画廊",
     "footer.copy": "© 2026 AGITO Studio",
