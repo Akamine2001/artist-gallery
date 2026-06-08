@@ -48,7 +48,7 @@ export const members: Member[] = [
   {
     name: { ja: "Akira", en: "Akira", "zh-Hans": "Akira" },
     role: {
-      ja: "パブリックリレーションズ",
+      ja: "広報",
       en: "public relations",
       "zh-Hans": "公共关系",
     },
@@ -57,7 +57,7 @@ export const members: Member[] = [
   {
     name: { ja: "Yu-chan", en: "Yu-chan", "zh-Hans": "Yu-chan" },
     role: {
-      ja: "電気エンジニア",
+      ja: "電気機械エンジニア",
       en: "electrical engineer",
       "zh-Hans": "电气工程师",
     },
@@ -66,7 +66,7 @@ export const members: Member[] = [
   {
     name: { ja: "Cayla", en: "Cayla", "zh-Hans": "Cayla" },
     role: {
-      ja: "国際渉外",
+      ja: "国際交流",
       en: "international relations",
       "zh-Hans": "国际事务",
     },
