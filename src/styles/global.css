@@ -22,7 +22,7 @@ html[lang="ja"] body {
   line-height: 1.75;
 }
 
-html[lang="zh"] body {
+html[lang|="zh"] body {
   font-family: "Inter", "Noto Sans SC", sans-serif;
   line-height: 1.7;
   letter-spacing: 0.02em;
@@ -71,7 +71,7 @@ nav a {
 
 /* 日本語/中国語ナビは詰まりやすいので少し緩める */
 html[lang="ja"] nav a,
-html[lang="zh"] nav a {
+html[lang|="zh"] nav a {
   letter-spacing: 0.05em;
 }
 
@@ -186,7 +186,7 @@ html[lang="ja"] .hero h1 {
   line-break: strict;
 }
 
-html[lang="zh"] .hero h1 {
+html[lang|="zh"] .hero h1 {
   font-family: "Noto Sans SC", "Cormorant Garamond", serif;
   font-size: clamp(3rem, 7.5vw, 6rem);
   line-height: 1.25;
@@ -205,11 +205,11 @@ html[lang="zh"] .hero h1 {
 }
 
 html[lang="ja"] .hero p,
-html[lang="zh"] .hero p {
+html[lang|="zh"] .hero p {
   max-width: 560px;
 }
 
-html[lang="zh"] .hero p {
+html[lang|="zh"] .hero p {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
@@ -247,7 +247,7 @@ html[lang="ja"] .section-title {
   font-weight: 500;
 }
 
-html[lang="zh"] .section-title {
+html[lang|="zh"] .section-title {
   font-family: "Noto Sans SC", serif;
   font-size: 2.6rem;
   font-weight: 500;
@@ -299,7 +299,7 @@ html[lang="zh"] .section-title {
   color: #444;
 }
 
-html[lang="zh"] .about p {
+html[lang|="zh"] .about p {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
@@ -410,7 +410,7 @@ html[lang="ja"] .gallery-meta h3 {
   font-size: 1.6rem;
 }
 
-html[lang="zh"] .gallery-meta h3 {
+html[lang|="zh"] .gallery-meta h3 {
   font-family: "Noto Sans SC", serif;
   font-size: 1.8rem;
   word-break: keep-all;
@@ -422,7 +422,7 @@ html[lang="zh"] .gallery-meta h3 {
   line-height: 1.6;
 }
 
-html[lang="zh"] .gallery-meta p {
+html[lang|="zh"] .gallery-meta p {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
@@ -487,7 +487,7 @@ html[lang="ja"] .artwork-detail__title {
   line-height: 1.3;
 }
 
-html[lang="zh"] .artwork-detail__title {
+html[lang|="zh"] .artwork-detail__title {
   font-family: "Noto Sans SC", serif;
   font-size: clamp(2.2rem, 5.5vw, 4rem);
   line-height: 1.3;
@@ -543,7 +543,7 @@ html[lang="ja"] .artwork-detail__section h2 {
   font-size: 1.4rem;
 }
 
-html[lang="zh"] .artwork-detail__section h2 {
+html[lang|="zh"] .artwork-detail__section h2 {
   font-family: "Noto Sans SC", serif;
   font-size: 1.5rem;
   word-break: keep-all;
@@ -556,7 +556,7 @@ html[lang="zh"] .artwork-detail__section h2 {
   line-height: 1.9;
 }
 
-html[lang="zh"] .artwork-detail__section .is-placeholder {
+html[lang|="zh"] .artwork-detail__section .is-placeholder {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
@@ -597,7 +597,7 @@ footer {
   }
 
   html[lang="ja"] .section-title,
-  html[lang="zh"] .section-title {
+  html[lang|="zh"] .section-title {
     font-size: 2rem;
   }
 

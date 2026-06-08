@@ -1,4 +1,5 @@
-import { defaultLocale, type Locale } from "./config";
+import { defaultLocale, type Locale, type SourceLocale } from "./config";
+import { toHant } from "./utils";
 
 const dict = {
   ja: {
@@ -6,7 +7,6 @@ const dict = {
     "nav.members": "メンバー",
     "nav.gallery": "ギャラリー",
     "nav.about": "私たちについて",
-    "hero.title": "私たちは<br />自分たちの世界を忘れてしまった",
     "hero.lead":
       "ビジュアルストーリーテリングを通じて、架空の文明・歴史・文化を生み出すマルチディシプリナリー・アーティストコレクティブ。",
     "hero.cta": "見る",
@@ -31,7 +31,6 @@ const dict = {
     "nav.members": "Members",
     "nav.gallery": "Gallery",
     "nav.about": "About",
-    "hero.title": "we<br />have forgotten our own world",
     "hero.lead":
       "A multidisciplinary artist collective creating fictional civilizations, histories, and cultures through visual storytelling.",
     "hero.cta": "Explore",
@@ -51,12 +50,11 @@ const dict = {
     "gallery.title": "gallery",
     "footer.copy": "© 2026 AGITO Studio",
   },
-  zh: {
+  "zh-Hans": {
     "nav.artwork": "作品",
     "nav.members": "成员",
     "nav.gallery": "画廊",
     "nav.about": "关于我们",
-    "hero.title": "我们<br />已经遗忘了自己的世界",
     "hero.lead":
       "一个跨学科的艺术家集体，通过视觉叙事创造虚构的文明、历史与文化。",
     "hero.cta": "探索",
@@ -76,10 +74,13 @@ const dict = {
     "gallery.title": "画廊",
     "footer.copy": "© 2026 AGITO Studio",
   },
-} as const satisfies Record<Locale, Record<string, string>>;
+} as const satisfies Record<SourceLocale, Record<string, string>>;
 
 export type UIKey = keyof (typeof dict)["ja"];
 
 export function t(key: UIKey, lang: Locale): string {
+  if (lang === "zh-Hant") {
+    return toHant(dict["zh-Hans"][key] ?? dict[defaultLocale][key]);
+  }
   return dict[lang][key] ?? dict[defaultLocale][key];
 }

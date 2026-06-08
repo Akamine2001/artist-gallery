@@ -10,74 +10,74 @@ export interface Member {
 
 export const members: Member[] = [
   {
-    name: { ja: "ジロウ", en: "Jiro", zh: "次郎" },
+    name: { ja: "Shinjiro", en: "Shinjiro", "zh-Hans": "Shinjiro" },
     role: {
       ja: "ハードウェアエンジニア",
       en: "hardware engineer",
-      zh: "硬件工程师",
+      "zh-Hans": "硬件工程师",
     },
     image: icon,
   },
   {
-    name: { ja: "アカイ", en: "Akai", zh: "赤井" },
+    name: { ja: "Akai", en: "Akai", "zh-Hans": "Akai" },
     role: {
       ja: "ミュージックプロデューサー",
       en: "music producer",
-      zh: "音乐制作人",
+      "zh-Hans": "音乐制作人",
     },
     image: icon,
   },
   {
-    name: { ja: "ハナ", en: "Hana", zh: "花" },
+    name: { ja: "Hannah", en: "Hannah", "zh-Hans": "Hannah" },
     role: {
       ja: "インタラクティブアーティスト",
       en: "interactive artist",
-      zh: "互动艺术家",
+      "zh-Hans": "互动艺术家",
     },
     image: icon,
   },
   {
-    name: { ja: "タイト", en: "Taito", zh: "泰斗" },
+    name: { ja: "Taito", en: "Taito", "zh-Hans": "Taito" },
     role: {
       ja: "ソフトウェアエンジニア",
       en: "software engineer",
-      zh: "软件工程师",
+      "zh-Hans": "软件工程师",
     },
     image: icon,
   },
   {
-    name: { ja: "アキラ", en: "Akira", zh: "明" },
+    name: { ja: "Akira", en: "Akira", "zh-Hans": "Akira" },
     role: {
       ja: "パブリックリレーションズ",
       en: "public relations",
-      zh: "公共关系",
+      "zh-Hans": "公共关系",
     },
     image: icon,
   },
   {
-    name: { ja: "ユウちゃん", en: "Yu-chan", zh: "小优" },
+    name: { ja: "Yu-chan", en: "Yu-chan", "zh-Hans": "Yu-chan" },
     role: {
       ja: "電気エンジニア",
       en: "electrical engineer",
-      zh: "电气工程师",
+      "zh-Hans": "电气工程师",
     },
     image: icon,
   },
   {
-    name: { ja: "ケイラ", en: "Kayla", zh: "凯拉" },
+    name: { ja: "Cayla", en: "Cayla", "zh-Hans": "Cayla" },
     role: {
       ja: "国際渉外",
       en: "international relations",
-      zh: "国际事务",
+      "zh-Hans": "国际事务",
     },
     image: icon,
   },
   {
-    name: { ja: "ダニカ", en: "Danica", zh: "丹妮卡" },
+    name: { ja: "Danica", en: "Danica", "zh-Hans": "Danica" },
     role: {
       ja: "ペイントアーティスト",
       en: "paint artist",
-      zh: "绘画艺术家",
+      "zh-Hans": "绘画艺术家",
     },
     image: icon,
   },

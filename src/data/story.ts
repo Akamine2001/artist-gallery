@@ -1,4 +1,5 @@
-import type { Locale } from "../i18n/config";
+import type { Locale, SourceLocale } from "../i18n/config";
+import { toHant } from "../i18n/utils";
 
 export type StoryChapter = {
   age: string;
@@ -28,7 +29,7 @@ const COMMON_TITLE = {
 
 const COMMON_META = { label: "STORY", number: "No.01", year: "2026" };
 
-export const storyContent: Record<Locale, StoryContent> = {
+export const storyContent: Record<SourceLocale, StoryContent> = {
   ja: {
     pageTitle: "花 — AGITO Studio",
     meta: COMMON_META,
@@ -132,7 +133,7 @@ export const storyContent: Record<Locale, StoryContent> = {
     },
   },
 
-  zh: {
+  "zh-Hans": {
     pageTitle: "花 — AGITO Studio",
     meta: COMMON_META,
     title: COMMON_TITLE,
@@ -245,3 +246,10 @@ export const storyContent: Record<Locale, StoryContent> = {
     },
   },
 };
+
+export function getStoryContent(lang: Locale): StoryContent {
+  if (lang === "zh-Hant") {
+    return JSON.parse(toHant(JSON.stringify(storyContent["zh-Hans"])));
+  }
+  return storyContent[lang];
+}

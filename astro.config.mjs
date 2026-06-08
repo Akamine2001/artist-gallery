@@ -6,8 +6,8 @@ export default defineConfig({
   site: "https://Akamine2001.github.io",
   base: "/artist-gallery/",
   i18n: {
-    locales: ["en", "ja", "zh"],
-    defaultLocale: "en",
+    locales: ["en", "ja", "zh-Hans", "zh-Hant"],
+    defaultLocale: "ja",
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: true,

@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 ---
 
 <section class="hero">
-  <h1 set:html={t("hero.title", lang)} />
+  <h1 set:html={"we<br />have forgotten our own world"} />
   <p>{t("hero.lead", lang)}</p>
   <a href="#artwork" class="button">{t("hero.cta", lang)}</a>
 </section>

@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { locales, localeLabels, type Locale } from "../../i18n/config";
-import { storyContent } from "../../data/story";
+import { getStoryContent } from "../../data/story";
 
 import coverImage from "../../assets/LLM-serenity in springtime calm.png";
 import sakuraImg from "../../assets/LLM-sakura.png";
@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Locale };
-const content = storyContent[lang];
+const content = getStoryContent(lang);
 const baseUrl = import.meta.env.BASE_URL;
 const backHref = `${baseUrl}${lang}/`;
 
@@ -179,7 +179,7 @@ const imagesByAge: Record<string, ImageMetadata> = {
         font-family: "Inter", "Noto Sans JP", sans-serif;
       }
 
-      html[lang="zh"] body.story-body {
+      html[lang|="zh"] body.story-body {
         font-family: "Inter", "Noto Sans SC", sans-serif;
         letter-spacing: 0.02em;
       }
@@ -225,7 +225,7 @@ const imagesByAge: Record<string, ImageMetadata> = {
         font-family: "Noto Sans JP", sans-serif;
       }
 
-      html[lang="zh"] .story-nav__back {
+      html[lang|="zh"] .story-nav__back {
         font-family: "Noto Sans SC", sans-serif;
       }
 
@@ -435,7 +435,7 @@ const imagesByAge: Record<string, ImageMetadata> = {
       }
 
       html[lang="ja"] .chapter__age-label,
-      html[lang="zh"] .chapter__age-label {
+      html[lang|="zh"] .chapter__age-label {
         font-family: "Noto Sans JP", sans-serif;
       }
 
@@ -451,7 +451,7 @@ const imagesByAge: Record<string, ImageMetadata> = {
         font-family: "Noto Sans JP", sans-serif;
       }
 
-      html[lang="zh"] .chapter__title {
+      html[lang|="zh"] .chapter__title {
         font-family: "Noto Sans SC", sans-serif;
       }
 
@@ -471,7 +471,7 @@ const imagesByAge: Record<string, ImageMetadata> = {
         margin-top: 0.7em;
       }
 
-      html[lang="zh"] .chapter__body {
+      html[lang|="zh"] .chapter__body {
         word-break: keep-all;
         overflow-wrap: anywhere;
       }
