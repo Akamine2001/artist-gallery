@@ -1,0 +1,34 @@
+---
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/ui";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+const services = [
+  { key: "service.item1" as const },
+  { key: "service.item2" as const },
+  { key: "service.item3" as const },
+];
+---
+
+<section id="service" class="section">
+  <div class="section-title">{t("service.title", lang)}</div>
+
+  <div class="services">
+    {
+      services.map((s) => (
+        <div class="service-card">
+          <div class="service-card__icon">
+            <div class="service-card__icon-placeholder" />
+          </div>
+          <h3 class="service-card__name">{t(s.key, lang)}</h3>
+          <p class="service-card__desc">{t(`${s.key}.desc` as any, lang)}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

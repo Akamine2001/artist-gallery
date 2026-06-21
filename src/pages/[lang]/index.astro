@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import Service from "../../components/Service.astro";
 import Artwork from "../../components/Artwork.astro";
 import Gallery from "../../components/Gallery.astro";
 import Members from "../../components/Members.astro";
@@ -16,6 +17,7 @@ const { lang } = Astro.params as { lang: Locale };
 
 <BaseLayout lang={lang}>
   <Hero lang={lang} />
+  <Service lang={lang} />
   <Artwork lang={lang} />
   <Gallery lang={lang} />
   <Members lang={lang} />
